@@ -46,7 +46,7 @@
     if (typeof web3 !== 'undefined') {
       web3 = new Web3(web3.currentProvider);
     } else {
-      web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+      //web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
     }
 
     var SerpentioAddress = '0xBDD1117Ba4DE088A62D1e6029e41f24415958129';
