@@ -14,8 +14,9 @@
 
   function getParticipants() {
     var numParticipants; //web3 1.0 not working
-    //Serpentio.methods.getParticipants().call().then(function (promise) { numParticipants = promise; }); 
-    numParticipants = Serpentio.getParticipants().c[0];
+    //Serpentio.methods.getParticipants().call().then(function (promise) { numParticipants = promise; });
+    numParticipants = Serpentio.methods.getParticipants().call().then(function (promise) { numParticipants = promise; });
+    //numParticipants = Serpentio.getParticipants().c[0];
     return numParticipants;
   }
 
