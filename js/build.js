@@ -73,7 +73,7 @@
 
     // Jquery
     console.log("Jquery debajo de aqui");
-    console.log(Serpentio.getCountdownDate().c[0]);
+    console.log(Serpentio.getCountdownDate());
     console.log("Jquery encima de aqui");
 
     $("#Balance").html(getBalance() + " ether");
