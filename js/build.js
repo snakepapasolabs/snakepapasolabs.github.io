@@ -38,7 +38,7 @@
   }
 
   function PlaySerpentio() {
-    return Serpentio.methods.Play("I've played via web :D").send()
+    //return Serpentio.methods.Play("I've played via web :D").send()
     //return Serpentio.Play("I've played via web :D").send();
 
   }
