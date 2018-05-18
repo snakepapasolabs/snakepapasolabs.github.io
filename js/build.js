@@ -45,14 +45,12 @@
   function _getCountdownDate() {
     //var currentCountdownDate; //web3 1.0 not working
     //Serpentio.methods.getCountdownDate().call().then(function (promise) { currentCountdownDate = new Date(promise); }); 
-
     return new Promise (function (resolve, reject) {
     	Serpentio.getCountdownDate(function(error, result) {
     	if(!error) {
     		unix_time = result.c[0];
     	    regular_date = new Date(unix_time*1000);
             currentCountdownDate = moment(regular_date).format("Do MMM YYYY, h:mm:ss");
-            console.log(currentCountdownDate);
             resolve(currentCountdownDate);
         	}
     	else {
@@ -81,7 +79,20 @@
   function PlaySerpentio() {
     //return Serpentio.methods.Play("I've played via web :D").send()
     //return Serpentio.Play("I've played via web :D").send();
+    var _ether_raw = document.getElementById("etheramount").value;
 
+    var  _etherSent = _ether_raw // TRANSFORMAR de 0.001 ETH a WEI, por ejemplo
+
+    return new Promise (function (resolve, reject) {
+      Serpentio.Play("", {value: _etherSent}, function(error, result) {
+      if(!error) {
+            resolve(result);
+          }
+      else {
+          reject(error);
+        }
+      })
+    });
   }
 
   function startSerpentio() {
@@ -96,8 +107,6 @@
     userAccount = web3.eth.accounts[0];
     console.log(userAccount);
     console.log("User account (address) should be above this");
-
-
   }
 
   window.addEventListener('load', function () {
@@ -118,9 +127,6 @@
     }, 100);
 
     // Jquery
-    console.log("Jquery debajo de aqui");
-    console.log(_getCountdownDate());
-    console.log("Jquery encima de aqui");
 
     $("#Balance").html(_getBalance() + " ether");
     $("#Participants").html(_getParticipants());
