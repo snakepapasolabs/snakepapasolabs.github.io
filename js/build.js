@@ -14,15 +14,15 @@
     //var totalBalance; //web3 1.0 not working
     //Serpentio.methods.getBalance().call().then(function (promise) { totalBalance = promise; });
     return new Promise (function (resolve, reject) {
-    	Serpentio.getBalance(function(error, result) {
-    	if(!error) {
-    		totalBalance = result.c[0];
+      Serpentio.getBalance(function(error, result) {
+      if(!error) {
+        totalBalance = result.c[0];
             resolve(totalBalance);
-        	}
-    	else {
-        	reject(error);
-    		}
-    	})
+          }
+      else {
+          reject(error);
+        }
+      })
     });
   }
 
@@ -30,15 +30,15 @@
     //var numParticipants; //web3 1.0 not working
     //Serpentio.methods.getParticipants().call().then(function (promise) { numParticipants = promise; }); 
     return new Promise (function (resolve, reject) {
-    	Serpentio.getParticipants(function(error, result) {
-    	if(!error) {
-    		numParticipants = result.c[0];
+      Serpentio.getParticipants(function(error, result) {
+      if(!error) {
+        numParticipants = result.c[0];
             resolve(numParticipants);
-        	}
-    	else {
-        	reject(error);
-    		}
-    	})
+          }
+      else {
+          reject(error);
+        }
+      })
     });
   }
 
@@ -46,17 +46,17 @@
     //var currentCountdownDate; //web3 1.0 not working
     //Serpentio.methods.getCountdownDate().call().then(function (promise) { currentCountdownDate = new Date(promise); }); 
     return new Promise (function (resolve, reject) {
-    	Serpentio.getCountdownDate(function(error, result) {
-    	if(!error) {
-    		unix_time = result.c[0];
-    	    regular_date = new Date(unix_time*1000);
+      Serpentio.getCountdownDate(function(error, result) {
+      if(!error) {
+        unix_time = result.c[0];
+          regular_date = new Date(unix_time*1000);
             currentCountdownDate = moment(regular_date).format("Do MMM YYYY, h:mm:ss");
             resolve(currentCountdownDate);
-        	}
-    	else {
-        	reject(error);
-    		}
-    	})
+          }
+      else {
+          reject(error);
+        }
+      })
     });
   }
 
@@ -64,15 +64,15 @@
     //var thisUserReturns; //web3 1.0 not working
     //Serpentio.methods.getReturns(userAccount).call().then(function (promise) { thisUserReturns = promise; }); 
     return new Promise (function (resolve, reject) {
-    	Serpentio.getReturns(web3.eth.accounts[0], function(error, result) {
-    	if(!error) {
-    		thisUserReturns = result.c[0];
+      Serpentio.getReturns(web3.eth.accounts[0], function(error, result) {
+      if(!error) {
+        thisUserReturns = result.c[0];
             resolve(thisUserReturns);
-        	}
-    	else {
-        	reject(error);
-    		}
-    	})
+          }
+      else {
+          reject(error);
+        }
+      })
     });
   }
 
@@ -97,21 +97,26 @@
 
   function startSerpentio() {
 
-    var SerpentioAddress = '0xBDD1117Ba4DE088A62D1e6029e41f24415958129';
-    var SerpentioABI = [{"constant":false,"inputs":[],"name":"CollectReturns","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"SerpenSegmentCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"investorsList","outputs":[{"name":"investorAddress","type":"address"},{"name":"amountInvested","type":"uint256"},{"name":"SegmentNumber","type":"uint256"},{"name":"time","type":"uint256"},{"name":"quote","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"SerpentCountDown","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_SerpentCountDown","type":"uint256"}],"name":"NewSerpent","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getParticipants","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getCountdownDate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_quote","type":"string"}],"name":"Play","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"_address","type":"address"}],"name":"getReturns","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"SerpentIsRunning","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"SerpentHead","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"investorReturn","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"previousOwner","type":"address"},{"indexed":true,"name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"}];
+    // Rinkeby network config
+    var SerpentioAddress = '0xb8238f0e8f8242575a5c0d8226a0cd6925e96563';
+    var SerpentioABI = [{"constant":false,"inputs":[],"name":"CollectReturns","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_SerpentCountDown","type":"uint256"}],"name":"NewSerpent","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"previousOwner","type":"address"},{"indexed":true,"name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"constant":false,"inputs":[{"name":"_quote","type":"string"}],"name":"Play","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"constant":true,"inputs":[],"name":"getBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getCountdownDate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getParticipants","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_address","type":"address"}],"name":"getReturns","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"investorReturn","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"investorsList","outputs":[{"name":"investorAddress","type":"address"},{"name":"amountInvested","type":"uint256"},{"name":"SegmentNumber","type":"uint256"},{"name":"time","type":"uint256"},{"name":"quote","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"SerpenSegmentCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"SerpentCountDown","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"SerpentHead","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"SerpentIsRunning","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"}];
+    
+    // Ethereum instance
     Serpentio = web3.eth.contract(SerpentioABI).at(SerpentioAddress);
     //var Serpentio = new web3.eth.Contract(SerpentioABI, SerpentioAddress); // web3 1.0 esta dando problemas
     console.log(Serpentio);
     console.log("Serpentio contract should be above this");
 
     userAccount = web3.eth.accounts[0];
+    //userAccount = web3.eth.getAccounts();
+
     console.log(userAccount);
     console.log("User account (address) should be above this");
   }
 
   window.addEventListener('load', function () {
 
-  	if (typeof web3 !== 'undefined') {
+    if (typeof web3 !== 'undefined') {
       web3 = new Web3(web3.currentProvider);
     } else {
       web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
@@ -136,25 +141,25 @@
 
     var Balance_Interval = setInterval(function() {
     if (_getBalance() !== totalBalance) {
-    	$("#Balance").html(totalBalance + " ether");
+      $("#Balance").html(totalBalance + " ether");
        }
     }, 100);    
 
     var Participants_Interval = setInterval(function() {
     if (_getParticipants() !== numParticipants) {
-    	$("#Participants").html(numParticipants);
+      $("#Participants").html(numParticipants);
        }
     }, 100);    
 
     var CountdownDate_Interval = setInterval(function() {
     if (_getCountdownDate() !== currentCountdownDate) {
-    	$("#CountdownDate").html(currentCountdownDate);
+      $("#CountdownDate").html(currentCountdownDate);
        }
     }, 100);
 
     var YourReturns_Interval = setInterval(function() {
     if (_getReturns() !== thisUserReturns) {
-    	$("#YourReturns").html(thisUserReturns + " ether");
+      $("#YourReturns").html(thisUserReturns + " ether");
        }
     }, 100);
 
